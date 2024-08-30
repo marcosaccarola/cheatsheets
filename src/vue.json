@@ -1,0 +1,56 @@
+{
+    "declarative rendering": {
+        "definition": "using a <template> syntax that extends HTML, declarative rendering describes how the HTML should look, based on js state and his changes",
+        "description": [
+            "declarative rendering is the core feature of Vue"
+        ],
+        "<template>": {
+            "syntax": "<template> <h1> {{ ('Hello world').split(' ').reverse().join(' ') }} </h1> </template>"
+        }
+    },
+
+    "reactive state": {
+        "definition": "reactive state is a state that can trigger actions when changed",
+        "reactive()": {
+            "syntax": "const counter = reactive({ count: 0 })",
+            "description": [
+                "reactive() is an API that creates js proxies that work just like normal objects, example: console.log(counter.count) // 0",
+                "reactive() only works on objects, including arrays and built-in types like Map and Set"
+            ]
+        },
+        "ref()": {
+            "syntax": "const message = ref('Hello')",
+            "description": [
+                "ref() can take any value type and create an object that exposes the inner value under .value property, example: console.log(message.value) // 'Hello'",
+                "ref() it is not possible to use .value when accessing the value of message in template, you need to use: {{ message }}"
+            ]
+        }
+    },
+    
+    "attribute binding": {
+        "definition": "attribute binding is a way bind an attribute to a dinamic value",
+        "directive": {
+            "definition": "directive is a special attribute that starts with v- prefix",
+            "description": [
+                "directive is similar to text interpolation",
+                "directive values are js expressions that have access to the component's state"
+            ],
+            "v-bind": {
+                "syntax": "<div v-bind:id = 'dinamicId'></div>",
+                "shorthand": "<div :id = 'dinamicId'></div>",
+                ":id": "argument of the directive",
+                "dinamicId": "synced property form the component's state"
+            }
+        }
+    },
+
+    "event listener": {
+        "definition": "event listeners are attributes that can listen to DOM using the v-on directive",
+        "v-on": {
+            "syntax": "<button v-on:click = '() => { /* do something */ }'> Click me </button>",
+            "shorthand": "<button @click = aHandlerDeclaredInScript> Click me </button>",
+            ":click": "argument of the directive",
+            "aHandlerDeclaredInScript": "synced function from the component's script"
+        }
+    }
+}
