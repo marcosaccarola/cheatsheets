@@ -26,15 +26,18 @@
             ]
         }
     },
+
+    "directive": {
+        "definition": "directive is a special attribute that starts with v- prefix",
+        "description": [
+            "directive is similar to text interpolation",
+            "directive values are js expressions that have access to the component's state"
+        ]
+    },
     
     "attribute binding": {
         "definition": "attribute binding is a way bind an attribute to a dinamic value",
-        "directive": {
-            "definition": "directive is a special attribute that starts with v- prefix",
-            "description": [
-                "directive is similar to text interpolation",
-                "directive values are js expressions that have access to the component's state"
-            ],
+        "directives": {
             "v-bind": {
                 "syntax": "<div v-bind:id = 'dinamicId'></div>",
                 "shorthand": "<div :id = 'dinamicId'></div>",
@@ -46,11 +49,68 @@
 
     "event listener": {
         "definition": "event listeners are attributes that can listen to DOM using the v-on directive",
-        "v-on": {
-            "syntax": "<button v-on:click = '() => { /* do something */ }'> Click me </button>",
-            "shorthand": "<button @click = aHandlerDeclaredInScript> Click me </button>",
-            ":click": "argument of the directive",
-            "aHandlerDeclaredInScript": "synced function from the component's script"
+        "directives": {
+            "v-on": {
+                "syntax": "<button v-on:click = '() => { /* do something */ }'> Click me </button>",
+                "shorthand": "<button @click = aHandlerDeclaredInScript> Click me </button>",
+                ":click": "argument of the directive",
+                "aHandlerDeclaredInScript": "synced function from the component's script"
+            }
         }
+    },
+
+    "form binding": {
+        "definition": "",
+        "descripion": [
+            "two-way bindings on form inputs elements can provided using v-bind and v-on together",
+            "two-way bindings can also provided using v-model directive (a two-way directive)"
+        ],
+        "directives": {
+            "v-model": {
+                "syntax": "<input v-model='text'>",
+                "shorthand": "",
+                "description": [ 
+                    "v-model directive automatically syncs the <input> value with the bound state so is not needed an event handler",
+                    "v-model not only works on text inputs but also on other input types (checkboxes, radio buttons, select dropdowns"
+                ]
+            }
+        }
+    },
+
+    "conditional rendering": {
+        "definition": "",
+        "directives": {
+            "v-if": {
+                "syntax": "<h1 v-if = 'awesome> It is awesome </h1>"
+            }
+        }
+    },
+
+    "list rendering": {
+        "definition": "used to render a list of elements based on a source array",
+        "directives": {
+            "v-for": {
+                "syntax": "<li v-for = 'todo in todos' :key = todo.id > {{ todo.text }} </li>",
+                "todo": [
+                    "todo is a local variable representing the array element currently being iterated on",
+                    "todo is only accessible on or inside the v-for element, similar to a function scope"
+                ],
+                "todos": "todos represent the array of objects iterated",
+                ":key = 'todo.id'": "key allows Vue to move each <li> to match the position of its corresponding object in the array",
+                "to update list": {
+                    "a": "call mutating methods on the soource array: todos.value.push(newTodo",
+                    "b": "replace the array with a new one: todos.value.filter( /* ... */ )"
+                }
+            }
+        }
+    },
+
+    "computed property": {
+        "definition": "",
+        "description": [
+            "a computed property tracks other reactive state used in its computation as dependencies",
+            "a computed property catches the result and automatically updates it when its dependencies changes"
+        ],
+        "syntax": "computed(() => {})"
     }
 }
